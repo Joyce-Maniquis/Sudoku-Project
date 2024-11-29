@@ -120,7 +120,9 @@ class SudokuGenerator:
     '''
 
     def is_valid(self, row, col, num):
-        return (self.valid_in_row(row, num)) and (self.valid_in_col(col, num)) and (self.valid_in_box(row, col, num))
+        r = row - row % self.box_length
+        c = col - col % self.box_length
+        return (self.valid_in_row(row, num)) and (self.valid_in_col(col, num)) and (self.valid_in_box(r, c, num))
 
     '''
     Fills the specified 3x3 box with values
@@ -259,3 +261,11 @@ def generate_sudoku(size, removed):
     sudoku.remove_cells()
     board = sudoku.get_board()
     return board
+
+
+if __name__ == "__main__":
+    size = 9
+    removed = 20
+    board = generate_sudoku(size, removed)
+    for row in board:
+        print(row)
