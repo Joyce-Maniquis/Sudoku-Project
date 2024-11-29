@@ -263,9 +263,3 @@ def generate_sudoku(size, removed):
     return board
 
 
-if __name__ == "__main__":
-    size = 9
-    removed = 20
-    board = generate_sudoku(size, removed)
-    for row in board:
-        print(row)
