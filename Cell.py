@@ -29,12 +29,12 @@ class Cell:
         #Font for regular value
         if self.value != 0:
             font = pygame.font.Font(None, 40)
-            text = font.render(str(self.value), True, BLACK)
+            text = font.render(str(self.value), 0, BLACK)
             self.screen.blit(text, (self.x + 20, self.y + 15))
         #Sketched Value
         elif self.sketched_value != 0:
             font = pygame.font.Font(None, 20)
-            text = font.render(str(self.sketched_value), True, GRAY)
+            text = font.render(str(self.sketched_value), 0, GRAY)
             self.screen.blit(text, (self.x + 5, self.y + 5))
 
         #Cell selected, draw a red boarder around it
