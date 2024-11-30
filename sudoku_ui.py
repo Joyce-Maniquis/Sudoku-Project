@@ -5,7 +5,7 @@ height = 600
 
 def draw_game_start(screen):
     # initializes the two fonts that will be used
-    title_font = pygame.font.Font(None,100)
+    title_font = pygame.font.Font(None,80)
     button_font = pygame.font.Font(None,50)
     diff_font = pygame.font.Font(None,70)
 
