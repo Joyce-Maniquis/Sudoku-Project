@@ -1,7 +1,7 @@
 import pygame
 
-width = 640
-height = 700
+width = 540
+height = 600
 
 def draw_game_start(screen):
     # initializes the two fonts that will be used
@@ -56,13 +56,13 @@ def draw_game_start(screen):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if easy_rectangle.collidepoint(event.pos):
                     diff = "easy"
-                    return
+                    return diff
                 if med_rectangle.collidepoint(event.pos):
                     diff = "med"
-                    return
+                    return diff
                 if hard_rectangle.collidepoint(event.pos):
                     diff = "hard"
-                    return
+                    return diff
         pygame.display.update()
 
 
@@ -106,15 +106,3 @@ def load_win(screen):
         center=(width // 2, height // 2 + 100))
     screen.blit(quit_surface, quit_rectangle)
 
-def main():
-    pygame.init()
-    screen = pygame.display.set_mode((width, height))
-    pygame.display.set_caption("Sudoku")
-
-    draw_game_start(screen)
-
-    screen.fill("light blue")
-
-
-if __name__ == "__main__":
-    main()
