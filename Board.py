@@ -16,10 +16,10 @@ class Board:
         size = 60
         for i in range(9):
             if i == 2 or i == 5:
-                w=3
+                w=5
             else:
-                w=1
-            pygame.draw.line(self.screen, "black", (size , 0), (size, 600), w)
+                w=3
+            pygame.draw.line(self.screen, "black", (size , 0), (size, 540), w)
             pygame.draw.line(self.screen, "black", (0, size), (540, size), w)
             size+= 60
         n = 1
