@@ -13,13 +13,15 @@ class Board:
 
     #draws the board and updates cells
     def draw(self):
-        for i in range(10):
+        size = 60
+        for i in range(9):
             if i == 3 or i == 6:
                 w=3
             else:
                 w=1
-            pygame.draw.line(self.screen, "black", (((self.width/9) * i + 1) , 0), (((self.width/9) * i + 1), self.height), w)
-            pygame.draw.line(self.screen, "black", (0, ((self.height/9) * i + 1)), (self.width, ((self.height/9) * i + 1)), w)
+            pygame.draw.line(self.screen, "black", ((size , 0), ((size, 600), w)))
+            pygame.draw.line(self.screen, "black", ((0, size), (540, size), w))
+            size+= 60
         n = 1
         for i in range(9):
             for j in range(9):
@@ -30,7 +32,7 @@ class Board:
                 cells[n].draw()
                 n += 2
 
-    #turns a cell into a selected cell and then updates the selected cell useing cell.draw()
+    #turns a cell into a selected cell and then updates the selected cell using cell.draw()
     def select(self, row, col):
         for i in range(1,162,2):
             cells[i+1].selected = False
