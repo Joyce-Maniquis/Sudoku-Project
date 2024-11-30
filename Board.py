@@ -14,8 +14,10 @@ class Board:
     #draws the board and updates cells
     def draw(self):
         size = 60
+        pygame.draw.line(screen, "black", (0, 0), (540, 0), 5)
+        pygame.draw.line(screen, "black", (0, 0), (0, 540), 5)
         for i in range(9):
-            if i == 2 or i == 5:
+            if i == 2 or i == 5 or i ==8:
                 w=5
             else:
                 w=3
