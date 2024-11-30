@@ -39,7 +39,7 @@ class Board:
         for i in range(1,162,2):
             cells[i].selected = False
         cell_num = list(cells.values()).index((row, col))
-        selected_cell = cells[cell_num]
+        selected_cell = cells[cell_num - 1]
         selected_cell.selected = True
         selected_cell.draw()
 
