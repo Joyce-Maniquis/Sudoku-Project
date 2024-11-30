@@ -102,6 +102,53 @@ def load_win(screen):
     quit_surface.fill("red")
     quit_surface.blit(quit_text, (10, 10))
 
+    def menu(screen):
+    button_font = pygame.font.Font(None, 25)
+
+    quit_text = button_font.render("Exit", 0, (0, 0, 0))
+    quit_surface = pygame.Surface((quit_text.get_size()[0] + 20, quit_text.get_size()[1] + 20))
+    quit_surface.fill("sea green")
+    quit_surface.blit(quit_text, (10, 10))
+
+    quit_rectangle = quit_surface.get_rect(
+        center=(3 * width // 4, height // 2 + 270))
+    screen.blit(quit_surface, quit_rectangle)
+
+    reset_text = button_font.render("Reset", 0, (0, 0, 0))
+    reset_surface = pygame.Surface((reset_text.get_size()[0] + 20, reset_text.get_size()[1] + 20))
+    reset_surface.fill("sea green")
+    reset_surface.blit(reset_text, (10, 10))
+
+    reset_rectangle = reset_surface.get_rect(
+        center=(width // 4, height // 2 + 270))
+    screen.blit(reset_surface, reset_rectangle)
+
+    restart_text = button_font.render("Restart", 0, (0, 0, 0))
+    restart_surface = pygame.Surface((restart_text.get_size()[0] + 20, restart_text.get_size()[1] + 20))
+    restart_surface.fill("sea green")
+    restart_surface.blit(restart_text, (10, 10))
+
+    restart_rectangle = restart_surface.get_rect(
+        center=(width // 2, height // 2 + 270))
+    screen.blit(restart_surface, restart_rectangle)
+
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if quit_rectangle.collidepoint(event.pos):
+                    pygame.quit()
+                    sys.exit()
+                if reset_rectangle.collidepoint(event.pos):
+                    board.reset_to_original()
+                    return
+                if restart_rectangle.collidepoint(event.pos):
+                    draw_game_start(screen)
+                    return
+        pygame.display.update()
+
     quit_rectangle = quit_surface.get_rect(
         center=(width // 2, height // 2 + 100))
     screen.blit(quit_surface, quit_rectangle)
