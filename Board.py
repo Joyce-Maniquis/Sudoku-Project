@@ -15,7 +15,7 @@ class Board:
     def draw(self):
         size = 60
         for i in range(9):
-            if i == 3 or i == 6:
+            if i == 2 or i == 5:
                 w=3
             else:
                 w=1
