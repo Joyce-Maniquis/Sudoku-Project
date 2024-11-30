@@ -19,8 +19,8 @@ class Board:
                 w=3
             else:
                 w=1
-            pygame.draw.line(self.screen, "black", ((size , 0), ((size, 600), w)))
-            pygame.draw.line(self.screen, "black", ((0, size), (540, size), w))
+            pygame.draw.line(self.screen, "black", (size , 0), (size, 600), w)
+            pygame.draw.line(self.screen, "black", (0, size), (540, size), w)
             size+= 60
         n = 1
         for i in range(9):
