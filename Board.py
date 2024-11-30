@@ -37,7 +37,7 @@ class Board:
     #turns a cell into a selected cell and then updates the selected cell using cell.draw()
     def select(self, row, col):
         for i in range(1,162,2):
-            cells[i+1].selected = False
+            cells[i].selected = False
         cell_num = list(cells.values()).index((row, col))
         selected_cell = cells[cell_num]
         selected_cell.selected = True
