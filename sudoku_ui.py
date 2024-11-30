@@ -142,8 +142,8 @@ def menu(screen):
                     pygame.quit()
                     sys.exit()
                 if reset_rectangle.collidepoint(event.pos):
-                    board.reset_to_original()
-                    return
+                    reset = True
+                    return reset
                 if restart_rectangle.collidepoint(event.pos):
                     draw_game_start(screen)
                     return
