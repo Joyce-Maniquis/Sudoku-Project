@@ -24,7 +24,6 @@ class Cell:
         self.sketched_value = value
 
     def draw(self):
-        pygame.draw.rect(self.screen, BLACK, (self.x, self.y, Cell_size, Cell_size), 2)
 
         #Font for regular value
         if self.value != 0:
