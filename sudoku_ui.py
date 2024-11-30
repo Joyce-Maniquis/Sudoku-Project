@@ -102,7 +102,7 @@ def load_win(screen):
     quit_surface.fill("red")
     quit_surface.blit(quit_text, (10, 10))
 
-    def menu(screen):
+def menu(screen):
     button_font = pygame.font.Font(None, 25)
 
     quit_text = button_font.render("Exit", 0, (0, 0, 0))
