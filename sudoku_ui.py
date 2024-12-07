@@ -4,8 +4,8 @@ import sys
 width = 540
 height = 600
 
+# initializes the starting screen
 def draw_game_start(screen):
-    # initializes the two fonts that will be used
     title_font = pygame.font.Font(None,80)
     button_font = pygame.font.Font(None,50)
     diff_font = pygame.font.Font(None,70)
@@ -67,7 +67,8 @@ def draw_game_start(screen):
                     return diff
         pygame.display.update()
 
-def load_game_over(screen):
+#loads the screen for losing sudoku
+def load_game_over(screen, click_pos=None):
     screen.fill("light blue")
 
     lose_font = pygame.font.Font(None, 100)
@@ -87,7 +88,11 @@ def load_game_over(screen):
         center=(width // 2, height // 2 + 100))
     screen.blit(restart_surface, restart_rectangle)
 
-def load_win(screen):
+    if click_pos is not None and restart_rectangle.collidepoint(click_pos):
+         return "restart"
+
+#loads the screen for winning sudoku
+def load_win(screen, click_pos=None):
     screen.fill("light blue")
 
     win_font = pygame.font.Font(None, 100)
@@ -102,10 +107,16 @@ def load_win(screen):
     quit_surface = pygame.Surface((quit_text.get_size()[0] + 20, quit_text.get_size()[1] + 20))
     quit_surface.fill("red")
     quit_surface.blit(quit_text, (10, 10))
+
     quit_rectangle = quit_surface.get_rect(
         center=(width // 2, height // 2 + 100))
     screen.blit(quit_surface, quit_rectangle)
 
+    if click_pos is not None and quit_rectangle.collidepoint(click_pos):
+            pygame.quit()
+            sys.exit()
+
+#loads the buttons for restaring, reseting, and quitting the game
 def menu(screen, click_pos=None):
     button_font = pygame.font.Font(None, 25)
 
