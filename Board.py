@@ -16,6 +16,8 @@ class Board:
             for j in range(9):
                 value = self.sudoku_list[i][j]
                 cell = Cell(value, i, j, self.screen)
+                if value != 0:
+                    cell.original = True
                 self.cells[(i + 1, j + 1)] = cell
 
         for i in self.cells:
@@ -44,7 +46,6 @@ class Board:
             self.selected_cell.selected = False
         self.selected_cell = self.cells.get((row, col))
         self.selected_cell.selected = True
-        #self.selected_cell.draw()
 
     # returns the row and column of a cell given the pixel coordinates
     def click(self, x, y):
@@ -54,12 +55,14 @@ class Board:
             return (row, col)
         return None
 
-    # clears the selected cells value and sketched value
+    # clears the selected cell value and sketched value
     def clear(self):
         for cell in self.cells.values():
-            if cell.selected:
+            if cell.selected and not cell.original:
                 cell.set_cell_value(0)
                 cell.set_sketched_value(0)
+                cell.draw()
+            else:
                 cell.draw()
 
     # sketches the given value into the selected cell
@@ -72,14 +75,20 @@ class Board:
     # sets the cell value to the value provided
     def place_number(self):
         for cell in self.cells.values():
-            if cell.selected:
+            if cell.selected and not cell.original:
                 cell.set_cell_value(cell.sketched_value)
 
-    # sets all values and sketched values to 0
+    # sets all non-original values and sketched values to 0
     def reset_to_original(self):
+        if self.selected_cell is not None:
+            self.selected_cell.selected = False
         for cell in self.cells.values():
-            cell.set_sketched_value(0)
-            cell.set_cell_value(0)
+            if not cell.original:
+                cell.set_cell_value(0)
+                cell.set_sketched_value(0)
+                cell.draw()
+            else:
+                cell.draw()
 
     # checks if there are any cells with value 0
     def is_full(self):
