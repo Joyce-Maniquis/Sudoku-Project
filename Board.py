@@ -75,10 +75,11 @@ class Board:
             if cell.selected:
                 cell.set_cell_value(cell.sketched_value)
 
-    # sets all sketch values to 0
+    # sets all values and sketched values to 0
     def reset_to_original(self):
         for cell in self.cells.values():
             cell.set_sketched_value(0)
+            cell.set_cell_value(0)
 
     # checks if there are any cells with value 0
     def is_full(self):
