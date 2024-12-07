@@ -73,7 +73,7 @@ class Board:
     def place_number(self):
         for cell in self.cells.values():
             if cell.selected:
-                cell.set_cell_value(sketched_value)
+                cell.set_cell_value(cell.sketched_value)
 
     # sets all sketch values to 0
     def reset_to_original(self):
