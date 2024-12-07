@@ -92,7 +92,7 @@ def load_win(screen):
 
     win_font = pygame.font.Font(None, 100)
     button_font = pygame.font.Font(None, 50)
-    win = win_font.render("You Lost", 0, "black")
+    win = win_font.render("You Win!", 0, "black")
 
     win_rectangle = win.get_rect(
         center=(width // 2, height // 2 - 150))
@@ -103,7 +103,7 @@ def load_win(screen):
     quit_surface.fill("red")
     quit_surface.blit(quit_text, (10, 10))
 
-def menu(screen, check_buttons):
+def menu(screen, click_pos=None):
     button_font = pygame.font.Font(None, 25)
 
     quit_text = button_font.render("Exit", 0, (0, 0, 0))
@@ -133,20 +133,14 @@ def menu(screen, check_buttons):
         center=(width // 2, height // 2 + 270))
     screen.blit(restart_surface, restart_rectangle)
 
-    while check_buttons:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if quit_rectangle.collidepoint(event.pos):
-                    pygame.quit()
-                    sys.exit()
-                elif reset_rectangle.collidepoint(event.pos):
-                    return "reset"
-                elif restart_rectangle.collidepoint(event.pos):
-                    return "restart"
-        pygame.display.update()
+    if click_pos is not None:
+        if quit_rectangle.collidepoint(click_pos):
+            pygame.quit()
+            sys.exit()
+        elif reset_rectangle.collidepoint(click_pos):
+            return "reset"
+        elif restart_rectangle.collidepoint(click_pos):
+            return "restart"
 
     '''
     quit_rectangle = quit_surface.get_rect(
