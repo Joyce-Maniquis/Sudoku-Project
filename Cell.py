@@ -16,6 +16,7 @@ class Cell:
         self.selected = False
         self.x = col * Cell_size
         self.y = row * Cell_size
+        self.original = False
 
     def set_cell_value(self, value):
         self.value = value
