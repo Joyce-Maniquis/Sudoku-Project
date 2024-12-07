@@ -102,6 +102,9 @@ def load_win(screen):
     quit_surface = pygame.Surface((quit_text.get_size()[0] + 20, quit_text.get_size()[1] + 20))
     quit_surface.fill("red")
     quit_surface.blit(quit_text, (10, 10))
+    quit_rectangle = quit_surface.get_rect(
+        center=(width // 2, height // 2 + 100))
+    screen.blit(quit_surface, quit_rectangle)
 
 def menu(screen, click_pos=None):
     button_font = pygame.font.Font(None, 25)
@@ -142,8 +145,3 @@ def menu(screen, click_pos=None):
         elif restart_rectangle.collidepoint(click_pos):
             return "restart"
 
-    '''
-    quit_rectangle = quit_surface.get_rect(
-        center=(width // 2, height // 2 + 100))
-    screen.blit(quit_surface, quit_rectangle)
-    '''
