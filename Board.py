@@ -86,7 +86,7 @@ class Board:
         for cell in self.cells.values():
             if cell.value == 0:
                 return False
-            return True
+        return True
 
     # draws every cell to update them
     def update_board(self):
