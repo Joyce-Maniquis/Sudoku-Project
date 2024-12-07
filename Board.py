@@ -70,10 +70,10 @@ class Board:
                 cell.draw()
 
     # sets the cell value to the value provided
-    def place_number(self, value):
+    def place_number(self):
         for cell in self.cells.values():
             if cell.selected:
-                cell.set_cell_value(value)
+                cell.set_cell_value(sketched_value)
 
     # sets all sketch values to 0
     def reset_to_original(self):
