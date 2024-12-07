@@ -110,53 +110,26 @@ def main():
                     pygame.display.flip()
 
     while not playing:
+
+        # Loads one of two ending screens
         if win:
             load_win(screen)
         else:
             load_game_over(screen)
         pygame.display.flip()
 
+        # Allows the user to exit or restart the game
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                #x, y = event.pos
-
                 if win:
                     load_win(screen, event.pos)
                 else:
                     button_check = load_game_over(screen, event.pos)
                     if button_check == "restart":
                         main()
-
-
-
-        '''
-        if win:
-            load_win(screen)
-            pygame.display.flip()
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if button_check == "exit":
-                        sudoku_list, board = begin(screen)
-                    pygame.display.flip()
-    
-        else:
-            load_game_over(screen)
-            pygame.display.flip()
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if button_check == "restart":
-                        sudoku_list, board = begin(screen)
-                    pygame.display.flip()
-        '''
 
 if __name__ == "__main__":
     main()
